@@ -25,3 +25,8 @@ function findeIndexedPoint (arr, start) {
         return false;
     }
 }
+
+
+/*
+* 算法说明：使用二分归并查找，并传入padding值
+* */
