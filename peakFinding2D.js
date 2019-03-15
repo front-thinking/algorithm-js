@@ -31,10 +31,10 @@ function peakFinding2D (arr, start, end) {
 * 辅助函数，查找二维数组中某一列的最大值
 * */
 function findMaxIndex (arr, k) {
-    var l = arr.length, index = 0, max = arr[k][index];
+    var l = arr.length, index = 0, max = arr[index][k];
     for (var i = 0; i < l; i++) {
-        if (arr[k][i] > max) {
-            max = arr[k][i];
+        if (arr[i][k] > max) {
+            max = arr[i][k];
             index = i;
         }
     }
@@ -42,9 +42,9 @@ function findMaxIndex (arr, k) {
 }
 
 
-function get2DArr(n) {
-    var n = n || 20000, i = j = 0, arr = [];
-    while(i < n) {
+function get2DArr(m, n) {
+    var n = n || 20000, m = m || 2000, i = j = 0, arr = [];
+    while(i < m) {
         arr[i] = [];
         while (j < n) {
             arr[i][j] = Math.floor(Math.random()*100);
