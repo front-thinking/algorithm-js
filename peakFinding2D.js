@@ -11,11 +11,13 @@ function peakFinding2D (arr, start, end) {
 
     var j = findMaxIndex(arr, mid); // 先找到第mid列的最大值
 
-    if (arr[j][mid] < arr[j][mid + 1] && mid + 1 <= l) {
+    // 遍历右侧列数
+    if (mid + 1 <= l && arr[j][mid] < arr[j][mid + 1]) {
         return peakFinding2D(arr, start + 1, end);
     }
 
-    if (arr[j][mid] < arr[j][mid-1] && mid - 1 >= 0) {
+    // 遍历左侧列数
+    if (mid - 1 >= 0 && arr[j][mid] < arr[j][mid-1]) {
         return peakFinding2D(arr, start, end-1);
     }
 
