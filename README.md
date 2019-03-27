@@ -1,2 +1,2 @@
 # algorithm-js
-common algorithm written by javascript
+common algorithms or interview coding questions written by javascript
