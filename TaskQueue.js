@@ -1,5 +1,5 @@
 /*
-* A TaskQueue class
+* A TaskQueue class based on callBack Style or continuation-passing style (CPS)
 * */
 
 class TaskQueue {
@@ -18,6 +18,34 @@ class TaskQueue {
         while (this.running < this.concurrency && this.queue.length) {
             const task = this.queue.shift();
             task(() => {
+                this.running--;
+                this.next();
+            });
+            this.running++;
+        }
+    }
+};
+
+/*
+* A TaskQueue class based on Promise Style
+* */
+
+class TaskQueue {
+    constructor(concurrency) {
+        this.concurrency = concurrency;
+        this.running = 0;
+        this.queue = [];
+    }
+
+    pushTask(task) {
+        this.queue.push(task);
+        this.next();
+    }
+
+    next() {
+        while (this.running < this.concurrency && this.queue.length) {
+            const task = this.queue.shift();
+            task().then(() => {
                 this.running--;
                 this.next();
             });
