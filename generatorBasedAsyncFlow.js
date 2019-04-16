@@ -22,3 +22,18 @@ function asyncFlow(generatorFunction) {
     const generator = generatorFunction(callback);
     generator.next();
 }
+
+function asyncFlowWithThunks(generatorFunction) {
+    function callback(err) {
+        if(err) {
+            return generator.throw(err);
+        }
+        const results = [].slice.call(arguments, 1);
+        const thunk = generator.next(results.length> 1 ? results :
+            results[0]).value;
+        thunk && thunk(callback);
+    }
+    const generator = generatorFunction();
+    const thunk = generator.next().value;
+    thunk && thunk(callback);
+}
