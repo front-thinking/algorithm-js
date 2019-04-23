@@ -10,7 +10,9 @@ asyncFlow(function*(callback) {
     console.log('Clone created');
 });
 
-
+/*
+* 主要的控制权在callback这个函数，将其作为参数传递到generatorFunction,然后在generatorFunction里的每一个异步里调用callback来继续执行；
+* */
 function asyncFlow(generatorFunction) {
     function callback(err) {
         if(err) {
@@ -23,6 +25,9 @@ function asyncFlow(generatorFunction) {
     generator.next();
 }
 
+/*
+* 主要的控制权依然是在callback这个函数，但是不再将其传递到generatorFunction里，而是拿到每一步generatorFunction返回的异步函数，然后执行。
+* */
 function asyncFlowWithThunks(generatorFunction) {
     function callback(err) {
         if(err) {
