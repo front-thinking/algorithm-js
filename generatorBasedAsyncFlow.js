@@ -62,7 +62,7 @@ function readFileThunk(filename, options) {
 * */
 asyncFlowWithThunks(function* () {
     const fileName = path.basename(__filename);
-    const myself = yield readFileThunk(__filename, 'utf8');
+    const myself = yield readFileThunk(fileName, 'utf8');
     yield writeFileThunk(`clone_of_${fileName}`, myself);
     console.log("Clone created");
 });
