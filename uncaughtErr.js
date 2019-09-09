@@ -11,7 +11,7 @@ function readJSONThrows(filename, callback) {
 }
 
 try {
-  readJSONThrows('noExist.html', err => {
+  readJSONThrows('noValideJSON.html', err => {
     console.log(123);
     console.log(err);
   });
