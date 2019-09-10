@@ -12,3 +12,5 @@ function iterate(index) {
    //iteration completed
  }
  iterate(0);
+
+iterateSeries(collection, iteratorCallback, finalCallback) // 可以封装为一个独立完整的方法
