@@ -35,3 +35,27 @@ tasks.forEach(task => {
 function finish() {
   //all the tasks completed
 }
+
+
+// 带并发限制的异步集合遍历操作
+const tasks = ...
+let concurrency = 2, running = 0, completed = 0, index = 0;
+function next() {
+  while(running < concurrency && index < tasks.length) {
+    task = tasks[index++];
+    task(() => {
+      if(completed === tasks.length) {
+        return finish();
+      }
+      completed++, running--;
+      next();
+   });
+   running++; 
+  }
+} 
+
+next();
+
+function finish() {
+  //all tasks finished
+}
