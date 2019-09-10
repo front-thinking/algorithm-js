@@ -18,6 +18,8 @@ iterateSeries(collection, iteratorCallback, finalCallback) // 可以封装为一
 
 
 // 遍历集合，并发执行异步操作
+// Pattern (unlimited parallel execution)
+// Run a set of asynchronous tasks in parallel by spawning them all at once, and then wait for all of them to complete by counting the number of times their callbacks are invoked.
 const tasks = [ /* ... */ ];
 
 let completed = 0;
