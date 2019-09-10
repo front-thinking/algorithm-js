@@ -1,4 +1,4 @@
-// Pattern (sequential iterator), 遍历一个集合，对每一项执行一个异步操作
+// Pattern (sequential iterator), 遍历一个集合，按顺序串行对每一项执行一个异步操作
 function iterate(index) {
    if(index === tasks.length)  {
      return finish();
