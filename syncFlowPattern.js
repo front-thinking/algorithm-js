@@ -59,3 +59,7 @@ next();
 function finish() {
   //all tasks finished
 }
+
+
+// 带有异步并发限制的任务调度器
+// 参考./TaskQueue.js
