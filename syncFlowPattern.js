@@ -1,4 +1,4 @@
-// Pattern (sequential iterator), 遍历一个集合，按顺序串行对每一项执行一个异步操作
+//case1:  Pattern (sequential iterator), 遍历一个集合，按顺序串行对每一项执行一个异步操作
 function iterate(index) {
    if(index === tasks.length)  {
      return finish();
@@ -17,7 +17,7 @@ iterateSeries(collection, iteratorCallback, finalCallback) // 可以封装为一
 
 
 
-// 遍历集合，并发执行异步操作
+//case2:  遍历集合，并发执行异步操作
 // Pattern (unlimited parallel execution)
 // Run a set of asynchronous tasks in parallel by spawning them all at once, and then wait for all of them to complete by counting the number of times their callbacks are invoked.
 const tasks = [ /* ... */ ];
@@ -37,7 +37,7 @@ function finish() {
 }
 
 
-// 带并发限制的异步集合遍历操作
+//case3:  带并发限制的异步集合遍历操作
 const tasks = ...
 let concurrency = 2, running = 0, completed = 0, index = 0;
 function next() {
@@ -61,5 +61,5 @@ function finish() {
 }
 
 
-// 带有异步并发限制的任务调度器
+//case4: 带有异步并发限制的任务调度器
 // 参考./TaskQueue.js
