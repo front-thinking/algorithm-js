@@ -14,3 +14,22 @@ function iterate(index) {
  iterate(0);
 
 iterateSeries(collection, iteratorCallback, finalCallback) // 可以封装为一个独立完整的方法
+
+
+
+// 遍历集合，并发执行异步操作
+const tasks = [ /* ... */ ];
+
+let completed = 0;
+
+tasks.forEach(task => {
+  task(() => {
+    if(++completed === tasks.length) {
+      finish();
+    }
+   }); 
+});
+
+function finish() {
+  //all the tasks completed
+}
