@@ -63,3 +63,26 @@ function finish() {
 
 //case4: 带有异步并发限制的任务调度器
 // 参考./TaskQueue.js
+
+
+//case5: 顺序执行异步，基于promise
+let tasks = [ /* ... */ ]
+let promise = Promise.resolve();
+tasks.forEach(task => {
+    promise = promise.then(() => {
+        return task();
+    }); });
+promise.then(() => {
+    //All tasks completed
+});
+
+//case6: 顺序执行异步，基于promise和reduce方法
+let tasks = [ /* ... */ ]
+let promise = tasks.reduce((prev, task) => {
+    return prev.then(() => {
+        return task();
+    });
+}, Promise.resolve());
+promise.then(() => {
+    //All tasks completed
+});
