@@ -32,3 +32,6 @@ reader1.onDataReady(data => {
     console.log('Second call data: ' + data); });
   });
 });
+
+
+// 考察输出结果，涉及知识点异步、时间循环等
